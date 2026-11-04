@@ -14,3 +14,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Local presentation exports
+/presentation/*.mp4
