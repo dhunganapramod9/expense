@@ -42,6 +42,9 @@ current implementation.
 
 ## Build and run
 
+For a missing `jlink.exe` error or Windows Gradle JVM setup, see
+[Windows JDK setup](docs/WINDOWS_BUILD.md).
+
 Open the project in Android Studio and select an emulator or Android device
 running Android 7.0 (API 24) or later.
 
