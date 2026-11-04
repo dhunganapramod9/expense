@@ -1,19 +1,17 @@
+# Local IDE settings
 *.iml
-.gradle
+.idea/
+.vscode/
+
+# Build output and machine-specific configuration
+.gradle/
 .kotlin/
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
 local.properties
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+.DS_Store
 
 # Local presentation exports
 /presentation/*.mp4

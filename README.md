@@ -42,9 +42,6 @@ current implementation.
 
 ## Build and run
 
-For a missing `jlink.exe` error or Windows Gradle JVM setup, see
-[Windows JDK setup](docs/WINDOWS_BUILD.md).
-
 Open the project in Android Studio and select an emulator or Android device
 running Android 7.0 (API 24) or later.
 
@@ -53,9 +50,21 @@ Platform 37, and Build Tools 36.0.0. Configure the SDK in Android Studio or an
 ignored `local.properties` file. Keep the wrapper checksum and TLS verification
 enabled.
 
-```sh
-bash gradlew :app:assembleDebug
+Set `JAVA_HOME` and Android Studio's Gradle JVM to a complete JDK 25 containing
+`java`, `javac`, `jlink`, and the `jmods` directory. Keep Gradle JVM criteria at 25.
+Do not select the Java runtime inside a VS Code extension. If changing JDKs, stop
+the old Gradle daemons before syncing again.
+
+On Windows, from the project folder:
+
+```powershell
+.\gradlew.bat --stop
+.\gradlew.bat --version
+.\gradlew.bat :app:assembleDebug
 ```
+
+On macOS or Linux, use `bash gradlew` in place of `.\gradlew.bat`.
+The Medium Phone API 36 emulator meets the app's minimum SDK requirement.
 
 The debug APK is generated at `app/build/outputs/apk/debug/app-debug.apk`.
 
@@ -72,7 +81,5 @@ Unit tests cover input validation, clearing inputs after addition, exact totals,
 duplicate expenses with different IDs, and deletion back to an empty list.
 Device tests cover adding and deleting, activity recreation, and validation messages.
 
-The last verified development run built the debug app and instrumentation APK,
-and passed all 9 local tests. Lint completed with 0 errors and 14 warnings,
-including an obsolete lifecycle lint registry that skipped two custom checks.
-Device tests were compiled but were not run in that environment.
+The local suite contains 8 ViewModel tests. The 2 device tests require an emulator
+or connected device; building their APK alone does not execute them.
